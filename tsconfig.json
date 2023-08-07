@@ -1,0 +1,40 @@
+{
+	"include": ["*.js", "*.ts"],
+	"exclude": ["node_modules"],
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Pure ESM",
+	"compilerOptions": {
+		// type checking
+		"allowUnreachableCode": false,
+		"allowUnusedLabels": false,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"strict": true,
+		// modules
+		"module": "esnext",
+		"moduleResolution": "nodenext",
+		"resolveJsonModule": true,
+		// emit
+		"verbatimModuleSyntax": true,
+		"noEmit": true,
+		// JS support
+		"allowJs": true,
+		"checkJs": true,
+		// interop constraints
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		// language & environment
+		"lib": [
+			"ESNext",
+			"DOM",
+			"WebWorker",
+			"DOM.Iterable",
+			"Webworker.Iterable",
+			"WebWorker.ImportScripts"
+		],
+		"target": "esnext",
+		// completeness
+		"skipLibCheck": true
+	}
+}

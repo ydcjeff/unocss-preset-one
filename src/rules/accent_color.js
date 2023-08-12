@@ -5,7 +5,9 @@ export const rules_accent_color = [
 	[
 		/^accent-(.+)$/,
 		([, value]) => {
-			return { 'accent-color': u.parse_value(value, [u.global, u.auto, u.any]) };
+			return {
+				'accent-color': u.parse_value(value, [u.global, u.auto, u.any]),
+			};
 		},
 		{
 			autocomplete: [

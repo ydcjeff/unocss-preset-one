@@ -1,6 +1,18 @@
-export { auto, any, global, fraction, number, rem, parse_value, GLOBAL_VALUES };
+export {
+	any,
+	auto,
+	DIRECTION_MAP,
+	fraction,
+	global,
+	GLOBAL_VALUES,
+	number,
+	parse_value,
+	RADIUS_MAP,
+	rem,
+};
 
 const NUMBER_RE = /^\d*(?:\.\d+)?$/;
+const FRACTION_RE = /^[1-9]\d*\/[1-9]\d*$/;
 const GLOBAL_VALUES = [
 	'inherit',
 	'initial',
@@ -8,6 +20,28 @@ const GLOBAL_VALUES = [
 	'revert-layer',
 	'unset',
 ];
+/** @type {Record<string, string[]>} */
+const DIRECTION_MAP = {
+	t: ['-top'],
+	r: ['-right'],
+	b: ['-bottom'],
+	l: ['-left'],
+	'': [''],
+	x: ['-top', '-bottom'],
+	y: ['-left', '-right'],
+};
+/** @type {Record<string, string[]>} */
+const RADIUS_MAP = {
+	t: ['-top-left', '-top-right'],
+	r: ['-top-right', '-bottom-right'],
+	b: ['-bottom-left', '-bottom-right'],
+	l: ['-top-left', '-bottom-left'],
+	'': [''],
+	tr: ['-top-right'],
+	br: ['-bottom-right'],
+	bl: ['-bottom-left'],
+	tl: ['-top-left'],
+};
 
 /** @type {Handler} */
 function auto(s) {
@@ -30,12 +64,7 @@ function global(s) {
 
 /** @type {Handler} */
 function fraction(s) {
-	const [numerator, denominator] = s.split('/', 2);
-	const res = Number.parseFloat(numerator) / Number.parseFloat(denominator);
-	if (!Number.isNaN(res)) {
-		if (res === 0) {
-			return '0';
-		}
+	if (FRACTION_RE.test(s)) {
 		return s;
 	}
 }
@@ -44,6 +73,9 @@ function fraction(s) {
 function rem(s) {
 	const n = number(s);
 	if (n != null) {
+		if (+n === 0) {
+			return 0;
+		}
 		return n + 'rem';
 	}
 }

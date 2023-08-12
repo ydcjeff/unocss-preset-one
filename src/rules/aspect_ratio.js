@@ -5,7 +5,14 @@ export const rules_aspect_ratio = [
 	[
 		/^aspect-(.+)$/,
 		([, value]) => {
-			return { 'aspect-ratio': u.parse_value(value, [u.global, u.auto, u.number, u.fraction]) };
+			return {
+				'aspect-ratio': u.parse_value(value, [
+					u.global,
+					u.auto,
+					u.number,
+					u.fraction,
+				]),
+			};
 		},
 		{
 			autocomplete: [

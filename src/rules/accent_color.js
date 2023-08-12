@@ -1,16 +1,16 @@
-import { global_values, handler } from '../utils.js';
+import * as u from '../utils.js';
 
 /** @type {import('@unocss/core').Rule[]} */
 export const rules_accent_color = [
 	[
 		/^accent-(.+)$/,
 		([, value]) => {
-			return { 'accent-color': handler.global.auto.any(value) };
+			return { 'accent-color': u.parse_value(value, [u.global, u.auto, u.any]) };
 		},
 		{
 			autocomplete: [
 				`accent-auto`,
-				`accent-(${global_values.join('|')})`,
+				`accent-(${u.GLOBAL_VALUES.join('|')})`,
 			],
 		},
 	],

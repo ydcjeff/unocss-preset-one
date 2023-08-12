@@ -1,6 +1,6 @@
 // @unocss-include
 
-import { createUno } from '../test_utils.js';
+import { create_uno } from '../test_utils.js';
 import { expect, test } from 'vitest';
 
 const should_matches = [
@@ -22,7 +22,7 @@ const sources = [
 ];
 
 test(__filename, async () => {
-	const uno = createUno();
+	const uno = create_uno();
 	const { css, matched } = await uno.generate(sources);
 
 	for (const should_not_match of should_not_matches) {

@@ -1,12 +1,14 @@
 export {
 	any,
 	auto,
+	DIRECTION_KEYS,
 	DIRECTION_MAP,
 	fraction,
 	global,
 	GLOBAL_VALUES,
 	number,
 	parse_value,
+	RADIUS_KEYS,
 	RADIUS_MAP,
 	rem,
 };
@@ -20,6 +22,7 @@ const GLOBAL_VALUES = [
 	'revert-layer',
 	'unset',
 ];
+
 /** @type {Record<string, string[]>} */
 const DIRECTION_MAP = {
 	t: ['-top'],
@@ -30,6 +33,8 @@ const DIRECTION_MAP = {
 	x: ['-top', '-bottom'],
 	y: ['-left', '-right'],
 };
+const DIRECTION_KEYS = Object.keys(DIRECTION_MAP);
+
 /** @type {Record<string, string[]>} */
 const RADIUS_MAP = {
 	t: ['-top-left', '-top-right'],
@@ -42,6 +47,7 @@ const RADIUS_MAP = {
 	bl: ['-bottom-left'],
 	tl: ['-top-left'],
 };
+const RADIUS_KEYS = Object.keys(RADIUS_MAP);
 
 /** @type {Handler} */
 function auto(s) {
@@ -93,7 +99,6 @@ function number(s) {
  */
 function parse_value(value, handlers) {
 	handlers = Array.isArray(handlers) ? handlers : [handlers];
-
 	for (const h of handlers) {
 		const res = h(value);
 		if (res != null) {

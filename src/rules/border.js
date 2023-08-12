@@ -31,7 +31,7 @@ export const rules_border = [
 			autocomplete: [
 				`border`,
 				`border-<num>`,
-				`border-<directions>-<num>`,
+				`border-(${u.DIRECTION_KEYS.join('|')})-<num>`,
 			],
 		},
 	],
@@ -49,16 +49,16 @@ export const rules_border = [
 		{
 			autocomplete: [
 				`border-(${BORDER_STYLES.join('|')})`,
-				`border-<directions>-(${BORDER_STYLES.join('|')})`,
+				`border-(${u.DIRECTION_KEYS.join('|')})-(${BORDER_STYLES.join('|')})`,
 			],
 		},
 	],
 
 	[
 		/^rounded(?:-([trbl]))?(?:-(.+))?$/,
-		([, direction = '', value]) => {
-			const dirs = u.RADIUS_MAP[direction];
-			return Object.fromEntries(dirs.map((d = '') => {
+		([, radius = '', value]) => {
+			const radii = u.RADIUS_MAP[radius];
+			return Object.fromEntries(radii.map((d = '') => {
 				return [
 					`border${d}-radius`,
 					value ? u.parse_value(value, u.rem) : '1px',
@@ -68,18 +68,18 @@ export const rules_border = [
 		{
 			autocomplete: [
 				`rounded`,
-				`rounded-(t|r|b|l)`,
+				`rounded-(${u.RADIUS_KEYS.join('|')})`,
 				`rounded-<num>`,
-				`rounded-(t|r|b|l)-<num>`,
+				`rounded-(${u.RADIUS_KEYS.join('|')})-<num>`,
 			],
 		},
 	],
 
 	[
 		/^rounded(?:-([trbl]{2}))(?:-(.+))?$/,
-		([, direction = '', value]) => {
-			const dirs = u.RADIUS_MAP[direction];
-			return Object.fromEntries(dirs.map((d = '') => {
+		([, radius = '', value]) => {
+			const radii = u.RADIUS_MAP[radius];
+			return Object.fromEntries(radii.map((d = '') => {
 				return [
 					`border${d}-radius`,
 					value ? u.parse_value(value, u.rem) : '1px',
@@ -88,8 +88,8 @@ export const rules_border = [
 		},
 		{
 			autocomplete: [
-				`rounded-(tr|br|bl|tl)`,
-				`rounded-(tr|br|bl|tl)-<num>`,
+				`rounded-(${u.RADIUS_KEYS.join('|')})`,
+				`rounded-(${u.RADIUS_KEYS.join('|')})-<num>`,
 			],
 		},
 	],

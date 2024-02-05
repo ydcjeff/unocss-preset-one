@@ -1,5 +1,4 @@
 {
-	"exclude": ["dist"],
 	"compilerOptions": {
 		// https://www.totaltypescript.com/tsconfig-cheat-sheet
 		/* Base Options: */
@@ -19,11 +18,9 @@
 		"moduleResolution": "Bundler",
 		"module": "ESNext",
 		"noEmit": true,
-		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"lib": ["ESNext"],
 
 		/* Extra */
-		"checkJs": true,
-		"jsx": "preserve",
-		"jsxImportSource": "solid-js"
+		"checkJs": true
 	}
 }

@@ -1,40 +1,29 @@
 {
-	"include": ["*.js", "*.ts"],
-	"exclude": ["node_modules"],
-	"$schema": "https://json.schemastore.org/tsconfig",
-	"display": "Pure ESM",
+	"exclude": ["dist"],
 	"compilerOptions": {
-		// type checking
-		"allowUnreachableCode": false,
-		"allowUnusedLabels": false,
-		"noFallthroughCasesInSwitch": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"strict": true,
-		// modules
-		"module": "esnext",
-		"moduleResolution": "nodenext",
-		"resolveJsonModule": true,
-		// emit
-		"verbatimModuleSyntax": true,
-		"noEmit": true,
-		// JS support
-		"allowJs": true,
-		"checkJs": true,
-		// interop constraints
+		// https://www.totaltypescript.com/tsconfig-cheat-sheet
+		/* Base Options: */
 		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		// language & environment
-		"lib": [
-			"ESNext",
-			"DOM",
-			"WebWorker",
-			"DOM.Iterable",
-			"Webworker.Iterable",
-			"WebWorker.ImportScripts"
-		],
-		"target": "esnext",
-		// completeness
-		"skipLibCheck": true
+		"skipLibCheck": false,
+		"target": "ESNext",
+		"allowJs": true,
+		"resolveJsonModule": true,
+		"moduleDetection": "force",
+		"isolatedModules": true,
+
+		/* Strictness */
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+
+		/* If NOT transpiling with TypeScript: */
+		"moduleResolution": "Bundler",
+		"module": "ESNext",
+		"noEmit": true,
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+
+		/* Extra */
+		"checkJs": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js"
 	}
 }

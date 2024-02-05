@@ -1,27 +1,31 @@
 {
 	"name": "unocss-preset-one",
-	"type": "module",
 	"version": "0.0.0",
-	"description": "All in one UnoCSS preset",
-	"scripts": {
-		"test": "vitest"
-	},
+	"type": "module",
+	"author": "Jeff Yang",
+	"license": "MIT",
 	"keywords": [
 		"unocss",
 		"preset",
 		"unocss-preset-one"
 	],
-	"author": "Jeff Yang",
-	"license": "MIT",
+	"files": [
+		"src/*.js"
+	],
+	"scripts": {
+		"test": "vitest",
+		"fmt": "prettier --ignore-path .gitignore -w ."
+	},
 	"devDependencies": {
-		"typescript": "5.1.6",
-		"vite": "4.4.9",
-		"vitest": "0.34.1"
+		"prettier": "3.2.5",
+		"typescript": "5.3.3",
+		"vite": "5.0.12",
+		"vitest": "1.2.2"
 	},
 	"engines": {
-		"node": ">=18"
+		"node": ">=20"
 	},
 	"dependencies": {
-		"@unocss/core": "0.54.1"
+		"@unocss/core": "0.58.5"
 	}
 }

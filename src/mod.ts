@@ -1,13 +1,13 @@
 import { Preset, Rule } from '@unocss/core';
 
-export type PresetOneOptions = {
+export interface PresetOneOptions {
 	/**
 	 * Prefix for the utilities of this preset.
 	 *
 	 * @default 'one-'
 	 */
 	prefix?: string;
-};
+}
 
 const NUMBER_RE_SOURCE = /(-?\d*(?:\.\d+)?)/.source;
 const DIRECTION_MAP = {

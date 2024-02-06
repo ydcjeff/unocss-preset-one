@@ -57,6 +57,17 @@ test(preset_one.name, async () => {
 		'leading-3',
 		'indent-4',
 
+		// inset
+		'inset-1',
+		'inset-x-2',
+		'inset-y-3',
+		'start-4',
+		'end-5',
+		'top-6',
+		'right-7',
+		'bottom-8',
+		'left-9',
+
 		// transform
 		'translate-x-1',
 		'translate-y-2',

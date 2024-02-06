@@ -35,7 +35,7 @@ export function preset_one(opts: PresetOneOptions = {}): Preset {
 			...create_border_rules(),
 			...create_flex_rules(),
 			...create_font_rules(),
-			// ...create_inset_rules(),
+			...create_inset_rules(),
 			...create_margin_padding_rules(),
 			// ...create_size_rules(),
 			...create_transform_rules(),
@@ -210,6 +210,42 @@ function create_font_rules(): Rule[] {
 	];
 }
 
+function create_inset_rules(): Rule[] {
+	return [
+		[
+			to_regexp(/inset-([xy]-)?/),
+			([, dir, value]) => {
+				return to_css_props(
+					dir === 'x-'
+						? ['left', 'right']
+						: dir === 'y-'
+							? ['top', 'bottom']
+							: 'inset',
+					value,
+				);
+			},
+			{ autocomplete: ['inset-<num>', 'inset-x-<num>', 'inset-y-<num>'] },
+		],
+		[
+			to_regexp(/(start|end)-/),
+			([, key, value]) => to_css_prop(`inset-inline-${key}`, value),
+			{ autocomplete: ['start-<num>', 'end-<num>'] },
+		],
+		[
+			to_regexp(/(top|right|bottom|left)-/),
+			([, key, value]) => to_css_prop(`${key}`, value),
+			{
+				autocomplete: [
+					'top-<num>',
+					'right-<num>',
+					'bottom-<num>',
+					'left-<num>',
+				],
+			},
+		],
+	];
+}
+
 function create_transform_rules(): Rule[] {
 	return [
 		[
@@ -332,43 +368,21 @@ function create_size_rules(): Rule[] {
 	];
 }
 
-function create_inset_rules(): Rule[] {
-	return [
-		[
-			to_regexp(/inset-([xy]-)?/),
-			([, dir, value]) => {
-				if (dir === 'x-') {
-					return to_css_props(['left', 'right'], value);
-				}
-				if (dir === 'y-') {
-					return to_css_props(['top', 'bottom'], value);
-				}
-				return to_css_prop('inset', value);
-			},
-		],
-		[
-			to_regexp(/(start|end)-/),
-			([, key, value]) => to_css_prop(`inset-inline-${key}`, value),
-		],
-		[
-			to_regexp(/(top|right|bottom|left)-/),
-			([, key, value]) => to_css_prop(`${key}`, value),
-		],
-	];
-}
-
 function to_regexp(klass: string | RegExp) {
 	klass = typeof klass === 'string' ? klass : klass.source;
 	return new RegExp(`^${klass}${NUMBER_RE_SOURCE}$`);
 }
 
-function to_css_props(keys: string[], value?: string) {
+function to_css_props(keys: string | string[], value?: string) {
 	if (value) {
-		const css_props: Record<string, string> = {};
-		for (const key of keys) {
-			css_props[key] = `${value}rem`;
+		if (Array.isArray(keys)) {
+			const css_props: Record<string, string> = {};
+			for (const key of keys) {
+				css_props[key] = `${value}rem`;
+			}
+			return css_props;
 		}
-		return css_props;
+		return { [keys]: `${value}rem` };
 	}
 }
 

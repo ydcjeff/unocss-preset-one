@@ -114,6 +114,35 @@
 .indent-4 {
 	text-indent: 4rem;
 }
+.inset-1 {
+	inset: 1rem;
+}
+.inset-x-2 {
+	left: 2rem;
+	right: 2rem;
+}
+.inset-y-3 {
+	top: 3rem;
+	bottom: 3rem;
+}
+.end-5 {
+	inset-inline-end: 5rem;
+}
+.start-4 {
+	inset-inline-start: 4rem;
+}
+.bottom-8 {
+	bottom: 8rem;
+}
+.left-9 {
+	left: 9rem;
+}
+.right-7 {
+	right: 7rem;
+}
+.top-6 {
+	top: 6rem;
+}
 .m-1 {
 	margin: 1rem;
 }

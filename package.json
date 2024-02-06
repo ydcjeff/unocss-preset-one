@@ -10,13 +10,27 @@
 		"unocss-preset-one"
 	],
 	"files": [
-		"src/*.js"
+		"dist/*.js",
+		"!dist/*.test.js"
 	],
+	"exports": {
+		".": {
+			"types": "./dist/mod.d.ts",
+			"import": "./dist/mod.js"
+		}
+	},
 	"scripts": {
 		"test": "vitest",
-		"fmt": "prettier --ignore-path .gitignore -w ."
+		"fmt": "prettier --ignore-path .gitignore -w .",
+		"typecheck": "tsc --noEmit",
+		"prepublishOnly": "tsc"
+	},
+	"dependencies": {
+		"@unocss/core": "0.58.5"
 	},
 	"devDependencies": {
+		"@types/node": "20.11.16",
+		"@unocss/preset-uno": "0.58.5",
 		"prettier": "3.2.5",
 		"typescript": "5.3.3",
 		"vite": "5.0.12",
@@ -24,8 +38,5 @@
 	},
 	"engines": {
 		"node": ">=20"
-	},
-	"dependencies": {
-		"@unocss/core": "0.58.5"
 	}
 }

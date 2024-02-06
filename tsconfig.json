@@ -1,4 +1,5 @@
 {
+	"include": ["*.js", "*.ts"],
 	"compilerOptions": {
 		// https://www.totaltypescript.com/tsconfig-cheat-sheet
 		/* Base Options: */
@@ -14,13 +15,16 @@
 		"strict": true,
 		"noUncheckedIndexedAccess": true,
 
-		/* If NOT transpiling with TypeScript: */
-		"moduleResolution": "Bundler",
-		"module": "ESNext",
-		"noEmit": true,
-		"lib": ["ESNext"],
+		/* If transpiling with TypeScript: */
+		"moduleResolution": "NodeNext",
+		"module": "NodeNext",
+		"outDir": "dist",
+		"sourceMap": true,
 
-		/* Extra */
+		/* AND if you're building for a library: */
+		"declaration": true,
+
+		"lib": ["ESNext"],
 		"checkJs": true
 	}
 }

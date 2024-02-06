@@ -1,0 +1,90 @@
+/* layer: one */
+.b-1,
+.border-1 {
+	border-width: 1rem;
+}
+.b-b-4,
+.border-b-4 {
+	border-bottom-width: 4rem;
+}
+.b-e-9,
+.border-e-9 {
+	border-inline-end-width: 9rem;
+}
+.b-l-5,
+.border-l-5 {
+	border-left-width: 5rem;
+}
+.b-r-3,
+.border-r-3 {
+	border-right-width: 3rem;
+}
+.b-s-8,
+.border-s-8 {
+	border-inline-start-width: 8rem;
+}
+.b-t-2,
+.border-t-2 {
+	border-top-width: 2rem;
+}
+.b-x-6,
+.border-x-6 {
+	border-left-width: 6rem;
+	border-right-width: 6rem;
+}
+.b-y-7,
+.border-y-7 {
+	border-top-width: 7rem;
+	border-bottom-width: 7rem;
+}
+.rounded-1 {
+	border-radius: 1rem;
+}
+.rounded-b-4 {
+	border-bottom-left-radius: 4rem;
+	border-bottom-right-radius: 4rem;
+}
+.rounded-bl-10 {
+	border-bottom-left-radius: 10rem;
+}
+.rounded-br-11 {
+	border-bottom-right-radius: 11rem;
+}
+.rounded-e-7 {
+	border-start-end-radius: 7rem;
+	border-end-end-radius: 7rem;
+}
+.rounded-ee-14 {
+	border-end-end-radius: 14rem;
+}
+.rounded-es-15 {
+	border-end-start-radius: 15rem;
+}
+.rounded-l-5 {
+	border-top-left-radius: 5rem;
+	border-bottom-left-radius: 5rem;
+}
+.rounded-r-3 {
+	border-top-right-radius: 3rem;
+	border-bottom-right-radius: 3rem;
+}
+.rounded-s-6 {
+	border-start-start-radius: 6rem;
+	border-end-start-radius: 6rem;
+}
+.rounded-se-13 {
+	border-start-end-radius: 13rem;
+}
+.rounded-ss-12 {
+	border-start-start-radius: 12rem;
+}
+.rounded-t-2 {
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
+}
+.rounded-tl-8 {
+	border-top-left-radius: 8rem;
+}
+.rounded-tr-9 {
+	border-top-right-radius: 9rem;
+}

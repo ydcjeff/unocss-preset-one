@@ -1,0 +1,289 @@
+/* layer: one */
+.one-b-1,
+.one-border-1 {
+	border-width: 1rem;
+}
+.one-b-b-4,
+.one-border-b-4 {
+	border-bottom-width: 4rem;
+}
+.one-b-e-9,
+.one-border-e-9 {
+	border-inline-end-width: 9rem;
+}
+.one-b-l-5,
+.one-border-l-5 {
+	border-left-width: 5rem;
+}
+.one-b-r-3,
+.one-border-r-3 {
+	border-right-width: 3rem;
+}
+.one-b-s-8,
+.one-border-s-8 {
+	border-inline-start-width: 8rem;
+}
+.one-b-t-2,
+.one-border-t-2 {
+	border-top-width: 2rem;
+}
+.one-b-x-6,
+.one-border-x-6 {
+	border-left-width: 6rem;
+	border-right-width: 6rem;
+}
+.one-b-y-7,
+.one-border-y-7 {
+	border-top-width: 7rem;
+	border-bottom-width: 7rem;
+}
+.one-rounded-1 {
+	border-radius: 1rem;
+}
+.one-rounded-b-4 {
+	border-bottom-left-radius: 4rem;
+	border-bottom-right-radius: 4rem;
+}
+.one-rounded-bl-10 {
+	border-bottom-left-radius: 10rem;
+}
+.one-rounded-br-11 {
+	border-bottom-right-radius: 11rem;
+}
+.one-rounded-e-7 {
+	border-start-end-radius: 7rem;
+	border-end-end-radius: 7rem;
+}
+.one-rounded-ee-14 {
+	border-end-end-radius: 14rem;
+}
+.one-rounded-es-15 {
+	border-end-start-radius: 15rem;
+}
+.one-rounded-l-5 {
+	border-top-left-radius: 5rem;
+	border-bottom-left-radius: 5rem;
+}
+.one-rounded-r-3 {
+	border-top-right-radius: 3rem;
+	border-bottom-right-radius: 3rem;
+}
+.one-rounded-s-6 {
+	border-start-start-radius: 6rem;
+	border-end-start-radius: 6rem;
+}
+.one-rounded-se-13 {
+	border-start-end-radius: 13rem;
+}
+.one-rounded-ss-12 {
+	border-start-start-radius: 12rem;
+}
+.one-rounded-t-2 {
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
+}
+.one-rounded-tl-8 {
+	border-top-left-radius: 8rem;
+}
+.one-rounded-tr-9 {
+	border-top-right-radius: 9rem;
+}
+.one-basis-1 {
+	flex-basis: 1rem;
+}
+.one-gap-2 {
+	gap: 2rem;
+}
+.one-gap-x-3 {
+	column-gap: 3rem;
+}
+.one-gap-y-4 {
+	row-gap: 4rem;
+}
+.one-text-1 {
+	font-size: 1rem;
+}
+.one-ls-2,
+.one-tracking-2 {
+	letter-spacing: 2rem;
+}
+.one-leading-3,
+.one-lh-3 {
+	line-height: 3rem;
+}
+.one-indent-4 {
+	text-indent: 4rem;
+}
+.one-inset-1 {
+	inset: 1rem;
+}
+.one-inset-x-2 {
+	left: 2rem;
+	right: 2rem;
+}
+.one-inset-y-3 {
+	top: 3rem;
+	bottom: 3rem;
+}
+.one-end-5 {
+	inset-inline-end: 5rem;
+}
+.one-start-4 {
+	inset-inline-start: 4rem;
+}
+.one-bottom-8 {
+	bottom: 8rem;
+}
+.one-left-9 {
+	left: 9rem;
+}
+.one-right-7 {
+	right: 7rem;
+}
+.one-top-6 {
+	top: 6rem;
+}
+.one-m-1 {
+	margin: 1rem;
+}
+.one-mb-4 {
+	margin-bottom: 4rem;
+}
+.one-me-9 {
+	margin-inline-end: 9rem;
+}
+.one-ml-5 {
+	margin-left: 5rem;
+}
+.one-mr-3 {
+	margin-right: 3rem;
+}
+.one-ms-8 {
+	margin-inline-start: 8rem;
+}
+.one-mt-2 {
+	margin-top: 2rem;
+}
+.one-mx-6 {
+	margin-left: 6rem;
+	margin-right: 6rem;
+}
+.one-my-7 {
+	margin-top: 7rem;
+	margin-bottom: 7rem;
+}
+.one-p-1 {
+	padding: 1rem;
+}
+.one-pb-4 {
+	padding-bottom: 4rem;
+}
+.one-pe-9 {
+	padding-inline-end: 9rem;
+}
+.one-pl-5 {
+	padding-left: 5rem;
+}
+.one-pr-3 {
+	padding-right: 3rem;
+}
+.one-ps-8 {
+	padding-inline-start: 8rem;
+}
+.one-pt-2 {
+	padding-top: 2rem;
+}
+.one-px-6 {
+	padding-left: 6rem;
+	padding-right: 6rem;
+}
+.one-py-7 {
+	padding-top: 7rem;
+	padding-bottom: 7rem;
+}
+.one-scroll-m-1 {
+	scroll-margin: 1rem;
+}
+.one-scroll-mb-4 {
+	scroll-margin-bottom: 4rem;
+}
+.one-scroll-me-9 {
+	scroll-margin-inline-end: 9rem;
+}
+.one-scroll-ml-5 {
+	scroll-margin-left: 5rem;
+}
+.one-scroll-mr-3 {
+	scroll-margin-right: 3rem;
+}
+.one-scroll-ms-8 {
+	scroll-margin-inline-start: 8rem;
+}
+.one-scroll-mt-2 {
+	scroll-margin-top: 2rem;
+}
+.one-scroll-mx-6 {
+	scroll-margin-left: 6rem;
+	scroll-margin-right: 6rem;
+}
+.one-scroll-my-7 {
+	scroll-margin-top: 7rem;
+	scroll-margin-bottom: 7rem;
+}
+.one-scroll-p-1 {
+	scroll-padding: 1rem;
+}
+.one-scroll-pb-4 {
+	scroll-padding-bottom: 4rem;
+}
+.one-scroll-pe-9 {
+	scroll-padding-inline-end: 9rem;
+}
+.one-scroll-pl-5 {
+	scroll-padding-left: 5rem;
+}
+.one-scroll-pr-3 {
+	scroll-padding-right: 3rem;
+}
+.one-scroll-ps-8 {
+	scroll-padding-inline-start: 8rem;
+}
+.one-scroll-pt-2 {
+	scroll-padding-top: 2rem;
+}
+.one-scroll-px-6 {
+	scroll-padding-left: 6rem;
+	scroll-padding-right: 6rem;
+}
+.one-scroll-py-7 {
+	scroll-padding-top: 7rem;
+	scroll-padding-bottom: 7rem;
+}
+.one-h-1 {
+	height: 1rem;
+}
+.one-max-h-3 {
+	max-height: 3rem;
+}
+.one-max-w-3 {
+	max-width: 3rem;
+}
+.one-min-h-2 {
+	min-height: 2rem;
+}
+.one-min-w-2 {
+	min-width: 2rem;
+}
+.one-w-1 {
+	width: 1rem;
+}
+.one-size-1 {
+	height: 1rem;
+	width: 1rem;
+}
+.one-translate-x-1 {
+	transform: translateX(1rem);
+}
+.one-translate-y-2 {
+	transform: translateY(2rem);
+}

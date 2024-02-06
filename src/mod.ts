@@ -1,6 +1,11 @@
 import { Preset, Rule } from '@unocss/core';
 
 export type PresetOneOptions = {
+	/**
+	 * Prefix for the utilities of this preset.
+	 *
+	 * @default 'one-'
+	 */
 	prefix?: string;
 };
 
@@ -25,7 +30,7 @@ const DIRECTION_MAP: Record<string, string> = {
 export { preset_one as presetOne };
 
 export function preset_one(opts: PresetOneOptions = {}): Preset {
-	const { prefix } = opts;
+	const { prefix = 'one-' } = opts;
 
 	return {
 		name: 'unocss-preset-one',

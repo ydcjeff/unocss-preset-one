@@ -1,7 +1,16 @@
-import { preset_one } from './src/mod';
+import { preset_one } from './src/mod.js';
 import { UserConfig } from '@unocss/core';
 import { presetUno } from '@unocss/preset-uno';
 
-export default {
-	presets: [presetUno({ preflight: false }), preset_one()],
-} satisfies UserConfig;
+const config: UserConfig = {
+	presets: [
+		presetUno({
+			preflight: false,
+		}),
+		preset_one({
+			prefix: '',
+		}),
+	],
+};
+
+export default config;

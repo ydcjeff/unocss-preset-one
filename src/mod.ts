@@ -10,11 +10,13 @@ export type PresetOneOptions = {
 };
 
 const NUMBER_RE_SOURCE = /(\d*(?:\.\d+)?)/.source;
-const DIRECTION_MAP: Record<string, string> = {
+const DIRECTION_MAP = {
 	t: 'top',
 	r: 'right',
 	b: 'bottom',
 	l: 'left',
+	x: ['left', 'right'],
+	y: ['top', 'bottom'],
 	s: 'start',
 	e: 'end',
 	tl: 'top-left',
@@ -26,6 +28,8 @@ const DIRECTION_MAP: Record<string, string> = {
 	ee: 'end-end',
 	es: 'end-start',
 };
+
+type Direction = keyof typeof DIRECTION_MAP;
 
 export { preset_one as presetOne };
 
@@ -53,35 +57,29 @@ function create_border_rules(): Rule[] {
 		// border-width
 		[
 			to_regexp(/b(?:order)?-([tlbrxyse]-)?/),
-			([, dir, value]) => {
-				if (!dir) {
-					return to_css_prop('border-width', value);
+			([, dir_dash, value]) => {
+				if (!dir_dash) {
+					return to_css_props('border-width', value);
 				}
 
 				// remove trailing dash
-				dir = dir.slice(0, -1);
-				if (dir === 'x') {
+				const dir_key = dir_dash.slice(0, -1) as Direction;
+
+				if (dir_key === 's' || dir_key === 'e') {
 					return to_css_props(
-						[`border-left-width`, `border-right-width`],
-						value,
-					);
-				} else if (dir === 'y') {
-					return to_css_props(
-						[`border-top-width`, `border-bottom-width`],
+						`border-inline-${DIRECTION_MAP[dir_key]}-width`,
 						value,
 					);
 				}
 
-				if (dir === 's' || dir === 'e') {
-					return to_css_prop(
-						`border-inline-${DIRECTION_MAP[dir]}-width`,
+				const dirs = DIRECTION_MAP[dir_key];
+				if (dirs) {
+					return to_css_props(
+						Array.isArray(dirs)
+							? dirs.map((d) => `border-${d}-width`)
+							: `border-${dirs}-width`,
 						value,
 					);
-				}
-
-				dir = DIRECTION_MAP[dir];
-				if (dir) {
-					return to_css_prop(`border-${dir}-width`, value);
 				}
 			},
 			{
@@ -110,38 +108,40 @@ function create_border_rules(): Rule[] {
 		// border-radius
 		[
 			to_regexp(/rounded-([trblse]{1,2}-)?/),
-			([, dir, value]) => {
-				if (!dir) {
-					return to_css_prop('border-radius', value);
+			([, dir_dash, value]) => {
+				if (!dir_dash) {
+					return to_css_props('border-radius', value);
 				}
 
 				// remove trailing dash
-				dir = dir.slice(0, -1);
-				if (dir === 't' || dir === 'b') {
-					dir = DIRECTION_MAP[dir];
-					return to_css_props(
-						[`border-${dir}-left-radius`, `border-${dir}-right-radius`],
-						value,
-					);
-				}
-				if (dir === 'l' || dir === 'r') {
-					dir = DIRECTION_MAP[dir];
-					return to_css_props(
-						[`border-top-${dir}-radius`, `border-bottom-${dir}-radius`],
-						value,
-					);
-				}
-				if (dir === 's' || dir === 'e') {
-					dir = DIRECTION_MAP[dir];
-					return to_css_props(
-						[`border-start-${dir}-radius`, `border-end-${dir}-radius`],
-						value,
-					);
-				}
-
-				dir = DIRECTION_MAP[dir];
-				if (dir) {
-					return to_css_prop(`border-${dir}-radius`, value);
+				const dir_key = dir_dash.slice(0, -1) as Direction;
+				const dirs = DIRECTION_MAP[dir_key];
+				if (typeof dirs === 'string') {
+					let keys: string | string[] = `border-${dirs}-radius`;
+					switch (dir_key) {
+						case 't':
+						case 'b':
+							keys = [
+								`border-${dirs}-left-radius`,
+								`border-${dirs}-right-radius`,
+							];
+							break;
+						case 'l':
+						case 'r':
+							keys = [
+								`border-top-${dirs}-radius`,
+								`border-bottom-${dirs}-radius`,
+							];
+							break;
+						case 's':
+						case 'e':
+							keys = [
+								`border-start-${dirs}-radius`,
+								`border-end-${dirs}-radius`,
+							];
+							break;
+					}
+					return to_css_props(keys, value);
 				}
 			},
 			{
@@ -171,19 +171,19 @@ function create_flex_rules(): Rule[] {
 	return [
 		[
 			to_regexp('basis-'),
-			([, value]) => to_css_prop('flex-basis', value),
+			([, value]) => to_css_props('flex-basis', value),
 			{ autocomplete: 'basis-<num>' },
 		],
 		[
 			to_regexp(/gap-([xy]-)?/),
 			([, dir, value]) => {
 				if (dir === 'x-') {
-					return to_css_prop('column-gap', value);
+					return to_css_props('column-gap', value);
 				}
 				if (dir === 'y-') {
-					return to_css_prop('row-gap', value);
+					return to_css_props('row-gap', value);
 				}
-				return to_css_prop('gap', value);
+				return to_css_props('gap', value);
 			},
 			{ autocomplete: ['gap-<num>', 'gap-x-<num>', 'gap-y-<num>'] },
 		],
@@ -194,22 +194,22 @@ function create_font_rules(): Rule[] {
 	return [
 		[
 			to_regexp('text-'),
-			([, value]) => to_css_prop('font-size', value),
+			([, value]) => to_css_props('font-size', value),
 			{ autocomplete: ['text-<num>'] },
 		],
 		[
 			to_regexp(/(?:tracking|ls)-/),
-			([, value]) => to_css_prop('letter-spacing', value),
+			([, value]) => to_css_props('letter-spacing', value),
 			{ autocomplete: ['ls-<num>', 'tracking-<num>'] },
 		],
 		[
 			to_regexp(/(?:lh|leading)-/),
-			([, value]) => to_css_prop('line-height', value),
+			([, value]) => to_css_props('line-height', value),
 			{ autocomplete: ['lh-<num>', 'leading-<num>'] },
 		],
 		[
 			to_regexp('indent-'),
-			([, value]) => to_css_prop('text-indent', value),
+			([, value]) => to_css_props('text-indent', value),
 			{ autocomplete: ['text-indent-<num>'] },
 		],
 	];
@@ -219,26 +219,21 @@ function create_inset_rules(): Rule[] {
 	return [
 		[
 			to_regexp(/inset-([xy]-)?/),
-			([, dir, value]) => {
-				return to_css_props(
-					dir === 'x-'
-						? ['left', 'right']
-						: dir === 'y-'
-							? ['top', 'bottom']
-							: 'inset',
-					value,
-				);
+			([, dir_dash = '', value]) => {
+				const dir_key = dir_dash.slice(0, -1) as Direction;
+				const dirs = DIRECTION_MAP[dir_key] || 'inset';
+				return to_css_props(dirs, value);
 			},
 			{ autocomplete: ['inset-<num>', 'inset-x-<num>', 'inset-y-<num>'] },
 		],
 		[
 			to_regexp(/(start|end)-/),
-			([, key, value]) => to_css_prop(`inset-inline-${key}`, value),
+			([, key, value]) => to_css_props(`inset-inline-${key}`, value),
 			{ autocomplete: ['start-<num>', 'end-<num>'] },
 		],
 		[
 			to_regexp(/(top|right|bottom|left)-/),
-			([, key, value]) => to_css_prop(`${key}`, value),
+			([, key, value]) => to_css_props(`${key}`, value),
 			{
 				autocomplete: [
 					'top-<num>',
@@ -255,30 +250,20 @@ function create_margin_padding_rules(): Rule[] {
 	return [
 		[
 			to_regexp(/(scroll-)?([mp])([trblxyse])?-/),
-			([, scroll = '', margin_or_padding, dir, value]) => {
+			([, scroll = '', margin_or_padding, dir = '', value]) => {
 				margin_or_padding =
 					scroll + (margin_or_padding === 'm' ? 'margin' : 'padding');
 
-				if (dir === 'x' || dir === 'y') {
-					const keys =
-						dir === 'x'
-							? [`${margin_or_padding}-left`, `${margin_or_padding}-right`]
-							: [`${margin_or_padding}-top`, `${margin_or_padding}-bottom`];
-					return to_css_props(keys, value);
-				}
-
+				const dirs = DIRECTION_MAP[dir as Direction];
 				if (dir === 's' || dir === 'e') {
-					return to_css_prop(
-						`${margin_or_padding}-inline-${DIRECTION_MAP[dir]}`,
-						value,
-					);
+					return to_css_props(`${margin_or_padding}-inline-${dirs}`, value);
 				}
 
-				dir = dir ? DIRECTION_MAP[dir] : '';
-				if (dir) {
-					dir = '-' + dir;
-				}
-				return to_css_prop(`${margin_or_padding}${dir}`, value);
+				const keys = Array.isArray(dirs)
+					? dirs.map((d) => `${margin_or_padding}-${d}`)
+					: `${margin_or_padding}${dirs ? `-${dirs}` : ''}`;
+
+				return to_css_props(keys, value);
 			},
 			{
 				autocomplete: [
@@ -333,7 +318,7 @@ function create_size_rules(): Rule[] {
 			to_regexp(/(min-|max-)?(w|h)-/),
 			([, min_max = '', width_or_height, value]) => {
 				width_or_height = width_or_height === 'w' ? 'width' : 'height';
-				return to_css_prop(`${min_max}${width_or_height}`, value);
+				return to_css_props(`${min_max}${width_or_height}`, value);
 			},
 			{
 				autocomplete: [
@@ -360,8 +345,8 @@ function create_transform_rules(): Rule[] {
 		[
 			to_regexp(/translate-([xy])-/),
 			([, dir, value]) => {
-				const css_prop = to_css_prop('transform', value);
-				if (css_prop) {
+				const css_prop = to_css_props('transform', value);
+				if (dir && css_prop) {
 					css_prop.transform = `translate${dir.toUpperCase()}(${css_prop.transform})`;
 					return css_prop;
 				}
@@ -388,11 +373,5 @@ function to_css_props(keys: string | string[], value?: string) {
 			return css_props;
 		}
 		return { [keys]: `${value}rem` };
-	}
-}
-
-function to_css_prop(key: string, value?: string) {
-	if (value) {
-		return { [key]: `${value}rem` };
 	}
 }

@@ -23,7 +23,8 @@
 		"test": "vitest",
 		"fmt": "prettier --ignore-path .gitignore -w .",
 		"typecheck": "tsc --noEmit",
-		"prepublishOnly": "tsc"
+		"prepublishOnly": "tsc",
+		"postinstall": "git config core.hooksPath .githooks"
 	},
 	"dependencies": {
 		"@unocss/core": "0.58.5"

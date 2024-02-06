@@ -46,6 +46,46 @@ test(preset_one.name, async () => {
 		// transform
 		'translate-x-1',
 		'translate-y-2',
+
+		// margin
+		'm-1',
+		'mt-2',
+		'mr-3',
+		'mb-4',
+		'ml-5',
+		'mx-6',
+		'my-7',
+		'ms-8',
+		'me-9',
+		'scroll-m-1',
+		'scroll-mt-2',
+		'scroll-mr-3',
+		'scroll-mb-4',
+		'scroll-ml-5',
+		'scroll-mx-6',
+		'scroll-my-7',
+		'scroll-ms-8',
+		'scroll-me-9',
+
+		// padding
+		'p-1',
+		'pt-2',
+		'pr-3',
+		'pb-4',
+		'pl-5',
+		'px-6',
+		'py-7',
+		'ps-8',
+		'pe-9',
+		'scroll-p-1',
+		'scroll-pt-2',
+		'scroll-pr-3',
+		'scroll-pb-4',
+		'scroll-pl-5',
+		'scroll-px-6',
+		'scroll-py-7',
+		'scroll-ps-8',
+		'scroll-pe-9',
 	];
 
 	const unocss_generator = createGenerator(uno_config);

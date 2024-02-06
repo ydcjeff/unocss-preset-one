@@ -37,7 +37,7 @@ export function preset_one(opts: PresetOneOptions = {}): Preset {
 			// ...create_flex_rules(),
 			// ...create_font_rules(),
 			// ...create_inset_rules(),
-			// ...create_margin_padding_rules(),
+			...create_margin_padding_rules(),
 			// ...create_size_rules(),
 		],
 	};
@@ -183,9 +183,18 @@ function create_transform_rules(): Rule[] {
 function create_margin_padding_rules(): Rule[] {
 	return [
 		[
-			to_regexp(/([mp])([trblxyse])?-/),
-			([, margin_or_padding, dir, value]) => {
-				margin_or_padding = margin_or_padding === 'm' ? 'margin' : 'padding';
+			to_regexp(/(scroll-)?([mp])([trblxyse])?-/),
+			([, scroll = '', margin_or_padding, dir, value]) => {
+				margin_or_padding =
+					scroll + (margin_or_padding === 'm' ? 'margin' : 'padding');
+
+				if (dir === 'x' || dir === 'y') {
+					const keys =
+						dir === 'x'
+							? [`${margin_or_padding}-left`, `${margin_or_padding}-right`]
+							: [`${margin_or_padding}-top`, `${margin_or_padding}-bottom`];
+					return to_css_props(keys, value);
+				}
 
 				if (dir === 's' || dir === 'e') {
 					return to_css_prop(
@@ -207,16 +216,40 @@ function create_margin_padding_rules(): Rule[] {
 					'mr-<num>',
 					'mb-<num>',
 					'ml-<num>',
+					'mx-<num>',
+					'my-<num>',
 					'ms-<num>',
 					'me-<num>',
+
+					'scroll-m-<num>',
+					'scroll-mt-<num>',
+					'scroll-mr-<num>',
+					'scroll-mb-<num>',
+					'scroll-ml-<num>',
+					'scroll-mx-<num>',
+					'scroll-my-<num>',
+					'scroll-ms-<num>',
+					'scroll-me-<num>',
 
 					'p-<num>',
 					'pt-<num>',
 					'pr-<num>',
 					'pb-<num>',
 					'pl-<num>',
+					'px-<num>',
+					'py-<num>',
 					'ps-<num>',
 					'pe-<num>',
+
+					'scroll-p-<num>',
+					'scroll-pt-<num>',
+					'scroll-pr-<num>',
+					'scroll-pb-<num>',
+					'scroll-pl-<num>',
+					'scroll-px-<num>',
+					'scroll-py-<num>',
+					'scroll-ps-<num>',
+					'scroll-pe-<num>',
 				],
 			},
 		],

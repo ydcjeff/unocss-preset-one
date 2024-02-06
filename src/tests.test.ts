@@ -49,6 +49,14 @@ test(preset_one.name, async () => {
 		'gap-x-3',
 		'gap-y-4',
 
+		// font
+		'text-1',
+		'tracking-2',
+		'ls-2',
+		'lh-3',
+		'leading-3',
+		'indent-4',
+
 		// transform
 		'translate-x-1',
 		'translate-y-2',

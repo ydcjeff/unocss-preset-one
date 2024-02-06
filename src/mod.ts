@@ -34,7 +34,7 @@ export function preset_one(opts: PresetOneOptions = {}): Preset {
 		rules: [
 			...create_border_rules(),
 			...create_flex_rules(),
-			// ...create_font_rules(),
+			...create_font_rules(),
 			// ...create_inset_rules(),
 			...create_margin_padding_rules(),
 			// ...create_size_rules(),
@@ -185,6 +185,31 @@ function create_flex_rules(): Rule[] {
 	];
 }
 
+function create_font_rules(): Rule[] {
+	return [
+		[
+			to_regexp('text-'),
+			([, value]) => to_css_prop('font-size', value),
+			{ autocomplete: ['text-<num>'] },
+		],
+		[
+			to_regexp(/(?:tracking|ls)-/),
+			([, value]) => to_css_prop('letter-spacing', value),
+			{ autocomplete: ['ls-<num>', 'tracking-<num>'] },
+		],
+		[
+			to_regexp(/(?:lh|leading)-/),
+			([, value]) => to_css_prop('line-height', value),
+			{ autocomplete: ['lh-<num>', 'leading-<num>'] },
+		],
+		[
+			to_regexp('indent-'),
+			([, value]) => to_css_prop('text-indent', value),
+			{ autocomplete: ['text-indent-<num>'] },
+		],
+	];
+}
+
 function create_transform_rules(): Rule[] {
 	return [
 		[
@@ -303,31 +328,6 @@ function create_size_rules(): Rule[] {
 			to_regexp('size-'),
 			([, value]) => to_css_props(['height', 'width'], value),
 			{ autocomplete: ['size-<num>'] },
-		],
-	];
-}
-
-function create_font_rules(): Rule[] {
-	return [
-		[
-			to_regexp('text-'),
-			([, value]) => to_css_prop('font-size', value),
-			{ autocomplete: ['text-<num>'] },
-		],
-		[
-			to_regexp(/(?:tracking|ls)-/),
-			([, value]) => to_css_prop('letter-spacing', value),
-			{ autocomplete: ['ls-<num>', 'tracking-<num>'] },
-		],
-		[
-			to_regexp(/(?:lh|leading)-/),
-			([, value]) => to_css_prop('line-height', value),
-			{ autocomplete: ['lh-<num>', 'leading-<num>'] },
-		],
-		[
-			to_regexp('indent-'),
-			([, value]) => to_css_prop('text-indent', value),
-			{ autocomplete: ['text-indent-<num>'] },
 		],
 	];
 }

@@ -100,6 +100,20 @@
 .gap-y-4 {
 	row-gap: 4rem;
 }
+.text-1 {
+	font-size: 1rem;
+}
+.ls-2,
+.tracking-2 {
+	letter-spacing: 2rem;
+}
+.leading-3,
+.lh-3 {
+	line-height: 3rem;
+}
+.indent-4 {
+	text-indent: 4rem;
+}
 .m-1 {
 	margin: 1rem;
 }

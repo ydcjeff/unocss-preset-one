@@ -88,3 +88,9 @@
 .rounded-tr-9 {
 	border-top-right-radius: 9rem;
 }
+.translate-x-1 {
+	transform: translateX(1rem);
+}
+.translate-y-2 {
+	transform: translateY(2rem);
+}

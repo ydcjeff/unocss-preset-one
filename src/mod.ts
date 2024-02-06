@@ -33,6 +33,7 @@ export function preset_one(opts: PresetOneOptions = {}): Preset {
 		prefix,
 		rules: [
 			...create_border_rules(),
+			...create_transform_rules(),
 			// ...create_flex_rules(),
 			// ...create_font_rules(),
 			// ...create_inset_rules(),
@@ -156,6 +157,24 @@ function create_border_rules(): Rule[] {
 					'rounded-ee-<num>',
 					'rounded-es-<num>',
 				],
+			},
+		],
+	];
+}
+
+function create_transform_rules(): Rule[] {
+	return [
+		[
+			to_regexp(/translate-([xy])-/),
+			([, dir, value]) => {
+				const css_prop = to_css_prop('transform', value);
+				if (css_prop) {
+					css_prop.transform = `translate${dir.toUpperCase()}(${css_prop.transform})`;
+					return css_prop;
+				}
+			},
+			{
+				autocomplete: ['translate-x-<num>', 'translate-y-<num>'],
 			},
 		],
 	];

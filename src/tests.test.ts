@@ -42,6 +42,10 @@ test(preset_one.name, async () => {
 		'rounded-se-13',
 		'rounded-ee-14',
 		'rounded-es-15',
+
+		// transform
+		'translate-x-1',
+		'translate-y-2',
 	];
 
 	const unocss_generator = createGenerator(uno_config);

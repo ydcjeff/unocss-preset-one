@@ -1,5 +1,6 @@
 {
 	"include": ["*.js", "*.ts"],
+	"exclude": ["dist"],
 	"compilerOptions": {
 		// https://www.totaltypescript.com/tsconfig-cheat-sheet
 		/* Base Options: */

@@ -9,7 +9,7 @@ export type PresetOneOptions = {
 	prefix?: string;
 };
 
-const NUMBER_RE_SOURCE = /(\d*(?:\.\d+)?)/.source;
+const NUMBER_RE_SOURCE = /(-?\d*(?:\.\d+)?)/.source;
 const DIRECTION_MAP = {
 	t: 'top',
 	r: 'right',

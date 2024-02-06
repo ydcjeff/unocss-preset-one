@@ -172,8 +172,41 @@
 	margin-top: 7rem;
 	margin-bottom: 7rem;
 }
+.p--\.1 {
+	padding: -0.1rem;
+}
+.p--\.11 {
+	padding: -0.11rem;
+}
+.p--0\.1 {
+	padding: -0.1rem;
+}
+.p--0\.11 {
+	padding: -0.11rem;
+}
+.p--1 {
+	padding: -1rem;
+}
+.p--10 {
+	padding: -10rem;
+}
+.p-\.1 {
+	padding: 0.1rem;
+}
+.p-\.11 {
+	padding: 0.11rem;
+}
+.p-0\.1 {
+	padding: 0.1rem;
+}
+.p-0\.11 {
+	padding: 0.11rem;
+}
 .p-1 {
 	padding: 1rem;
+}
+.p-10 {
+	padding: 10rem;
 }
 .pb-4 {
 	padding-bottom: 4rem;

@@ -7,6 +7,20 @@ import { format } from 'prettier';
 import uno_config from '../uno.config';
 
 const fixtures = [
+	// number regexp testing
+	'p-1',
+	'p-10',
+	'p-0.1',
+	'p-0.11',
+	'p-.1',
+	'p-.11',
+	'p--1',
+	'p--10',
+	'p--0.1',
+	'p--0.11',
+	'p--.1',
+	'p--.11',
+
 	// border
 	'b-1',
 	'b-t-2',

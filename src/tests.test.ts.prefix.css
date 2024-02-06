@@ -172,8 +172,41 @@
 	margin-top: 7rem;
 	margin-bottom: 7rem;
 }
+.one-p--\.1 {
+	padding: -0.1rem;
+}
+.one-p--\.11 {
+	padding: -0.11rem;
+}
+.one-p--0\.1 {
+	padding: -0.1rem;
+}
+.one-p--0\.11 {
+	padding: -0.11rem;
+}
+.one-p--1 {
+	padding: -1rem;
+}
+.one-p--10 {
+	padding: -10rem;
+}
+.one-p-\.1 {
+	padding: 0.1rem;
+}
+.one-p-\.11 {
+	padding: 0.11rem;
+}
+.one-p-0\.1 {
+	padding: 0.1rem;
+}
+.one-p-0\.11 {
+	padding: 0.11rem;
+}
 .one-p-1 {
 	padding: 1rem;
+}
+.one-p-10 {
+	padding: 10rem;
 }
 .one-pb-4 {
 	padding-bottom: 4rem;

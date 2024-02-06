@@ -33,12 +33,12 @@ export function preset_one(opts: PresetOneOptions = {}): Preset {
 		prefix,
 		rules: [
 			...create_border_rules(),
-			...create_transform_rules(),
-			// ...create_flex_rules(),
+			...create_flex_rules(),
 			// ...create_font_rules(),
 			// ...create_inset_rules(),
 			...create_margin_padding_rules(),
 			// ...create_size_rules(),
+			...create_transform_rules(),
 		],
 	};
 }
@@ -158,6 +158,29 @@ function create_border_rules(): Rule[] {
 					'rounded-es-<num>',
 				],
 			},
+		],
+	];
+}
+
+function create_flex_rules(): Rule[] {
+	return [
+		[
+			to_regexp('basis-'),
+			([, value]) => to_css_prop('flex-basis', value),
+			{ autocomplete: 'basis-<num>' },
+		],
+		[
+			to_regexp(/gap-([xy]-)?/),
+			([, dir, value]) => {
+				if (dir === 'x-') {
+					return to_css_prop('column-gap', value);
+				}
+				if (dir === 'y-') {
+					return to_css_prop('row-gap', value);
+				}
+				return to_css_prop('gap', value);
+			},
+			{ autocomplete: ['gap-<num>', 'gap-x-<num>', 'gap-y-<num>'] },
 		],
 	];
 }
@@ -305,24 +328,6 @@ function create_font_rules(): Rule[] {
 			to_regexp('indent-'),
 			([, value]) => to_css_prop('text-indent', value),
 			{ autocomplete: ['text-indent-<num>'] },
-		],
-	];
-}
-
-function create_flex_rules(): Rule[] {
-	return [
-		[to_regexp('basis-'), ([, value]) => to_css_prop('flex-basis', value)],
-		[
-			to_regexp(/gap-([xy]-)?/),
-			([, dir, value]) => {
-				if (dir === 'x-') {
-					return to_css_prop('column-gap', value);
-				}
-				if (dir === 'y-') {
-					return to_css_prop('row-gap', value);
-				}
-				return to_css_prop('gap', value);
-			},
 		],
 	];
 }

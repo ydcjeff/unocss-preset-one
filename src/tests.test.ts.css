@@ -88,11 +88,17 @@
 .rounded-tr-9 {
 	border-top-right-radius: 9rem;
 }
-.translate-x-1 {
-	transform: translateX(1rem);
+.basis-1 {
+	flex-basis: 1rem;
 }
-.translate-y-2 {
-	transform: translateY(2rem);
+.gap-2 {
+	gap: 2rem;
+}
+.gap-x-3 {
+	column-gap: 3rem;
+}
+.gap-y-4 {
+	row-gap: 4rem;
 }
 .m-1 {
 	margin: 1rem;
@@ -209,4 +215,10 @@
 .scroll-py-7 {
 	scroll-padding-top: 7rem;
 	scroll-padding-bottom: 7rem;
+}
+.translate-x-1 {
+	transform: translateX(1rem);
+}
+.translate-y-2 {
+	transform: translateY(2rem);
 }

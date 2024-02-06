@@ -43,6 +43,12 @@ test(preset_one.name, async () => {
 		'rounded-ee-14',
 		'rounded-es-15',
 
+		// flex
+		'basis-1',
+		'gap-2',
+		'gap-x-3',
+		'gap-y-4',
+
 		// transform
 		'translate-x-1',
 		'translate-y-2',

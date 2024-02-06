@@ -37,7 +37,7 @@ export function preset_one(opts: PresetOneOptions = {}): Preset {
 			...create_font_rules(),
 			...create_inset_rules(),
 			...create_margin_padding_rules(),
-			// ...create_size_rules(),
+			...create_size_rules(),
 			...create_transform_rules(),
 		],
 	};
@@ -246,24 +246,6 @@ function create_inset_rules(): Rule[] {
 	];
 }
 
-function create_transform_rules(): Rule[] {
-	return [
-		[
-			to_regexp(/translate-([xy])-/),
-			([, dir, value]) => {
-				const css_prop = to_css_prop('transform', value);
-				if (css_prop) {
-					css_prop.transform = `translate${dir.toUpperCase()}(${css_prop.transform})`;
-					return css_prop;
-				}
-			},
-			{
-				autocomplete: ['translate-x-<num>', 'translate-y-<num>'],
-			},
-		],
-	];
-}
-
 function create_margin_padding_rules(): Rule[] {
 	return [
 		[
@@ -344,9 +326,9 @@ function create_size_rules(): Rule[] {
 	return [
 		[
 			to_regexp(/(min-|max-)?(w|h)-/),
-			([, min_max = '', width_height, value]) => {
-				width_height = width_height === 'w' ? 'width' : 'height';
-				return to_css_prop(`${min_max}${width_height}`, value);
+			([, min_max = '', width_or_height, value]) => {
+				width_or_height = width_or_height === 'w' ? 'width' : 'height';
+				return to_css_prop(`${min_max}${width_or_height}`, value);
 			},
 			{
 				autocomplete: [
@@ -364,6 +346,24 @@ function create_size_rules(): Rule[] {
 			to_regexp('size-'),
 			([, value]) => to_css_props(['height', 'width'], value),
 			{ autocomplete: ['size-<num>'] },
+		],
+	];
+}
+
+function create_transform_rules(): Rule[] {
+	return [
+		[
+			to_regexp(/translate-([xy])-/),
+			([, dir, value]) => {
+				const css_prop = to_css_prop('transform', value);
+				if (css_prop) {
+					css_prop.transform = `translate${dir.toUpperCase()}(${css_prop.transform})`;
+					return css_prop;
+				}
+			},
+			{
+				autocomplete: ['translate-x-<num>', 'translate-y-<num>'],
+			},
 		],
 	];
 }

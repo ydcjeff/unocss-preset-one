@@ -68,10 +68,6 @@ test(preset_one.name, async () => {
 		'bottom-8',
 		'left-9',
 
-		// transform
-		'translate-x-1',
-		'translate-y-2',
-
 		// margin
 		'm-1',
 		'mt-2',
@@ -111,6 +107,19 @@ test(preset_one.name, async () => {
 		'scroll-py-7',
 		'scroll-ps-8',
 		'scroll-pe-9',
+
+		// size
+		'w-1',
+		'min-w-2',
+		'max-w-3',
+		'h-1',
+		'min-h-2',
+		'max-h-3',
+		'size-1',
+
+		// transform
+		'translate-x-1',
+		'translate-y-2',
 	];
 
 	const unocss_generator = createGenerator(uno_config);

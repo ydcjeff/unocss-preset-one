@@ -1,0 +1,14 @@
+{
+	"name": "@ydcjeff/unocss-preset-one",
+	"version": "0.1.2",
+	"exports": "./src/mod.ts",
+	"publish": {
+		"exclude": ["**/*.test.*", "*.ts"]
+	},
+	"fmt": {
+		"singleQuote": true,
+		"useTabs": true,
+		"proseWrap": "always"
+	},
+	"lock": false
+}

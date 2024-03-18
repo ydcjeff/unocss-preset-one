@@ -1,5 +1,6 @@
 import { Preset, Rule } from '@unocss/core';
 
+/** Options for `preset_one` Preset. */
 export interface PresetOneOptions {
 	/**
 	 * Prefix for the utilities of this preset.
@@ -33,6 +34,7 @@ type Direction = keyof typeof DIRECTION_MAP;
 
 export { preset_one as presetOne };
 
+/** `1` to `1rem` UnoCSS preset. */
 export function preset_one(opts: PresetOneOptions = {}): Preset {
 	const { prefix = 'one-' } = opts;
 
